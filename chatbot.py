@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 ##### User Message Processing #########################################################################################
+
 def swear_words(user_msg):
 	"""
 	This function checks user_msg for swear words
