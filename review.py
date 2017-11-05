@@ -1,5 +1,4 @@
 # coding=utf-8
-# imports here
 import csv
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import stopwords, wordnet
@@ -166,10 +165,10 @@ class Review(object):
 
 	def predict_sentiment(self):
 		"""
-		If a review does not come with a
-		In the future this section will use a ML model to predict
-		negative:0 or positive:1 sentiment.
-		:return: a randomly generate a number between 0 and 1
+		Use a ML model to predict sentiment.
+
+		negative:0 positive:1
+		:return: int between 0 and 1
 		"""
 		top_words = pickle.load(open("top_words.p", "rb"))
 
@@ -192,19 +191,3 @@ class Review(object):
 		with open(file_location, 'ab') as csvfile:
 			writer = csv.writer(csvfile)
 			writer.writerow([self.review])
-
-
-# Once you are done coding the above class, test it out by running it in the console
-# It should print out the first 5 reviews and their sentiment (0 or 1)
-# When it passes this test, please delete these comments and this main section below :)
-if __name__ == '__main__':
-
-	rows = []
-	with open("cafe_reviews.csv") as csvfile:
-		reader = csv.reader(csvfile)
-		for row in reader:
-			rows.append(row)
-
-	for i in rows[1:5]:
-		review = Review(i[1], int(i[2]))
-		print review.review, review.review_sentiment
